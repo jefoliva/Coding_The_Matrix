@@ -34,7 +34,8 @@ products = [
  	Vec(D, {'metal':.15, 'plastic':.5, 'water':.4,'electricity':.8})
 ]
 
-print(lin_comb(products, quantities))
+b = lin_comb(products, quantities)
+print(b)
 
 # Computational Problem 3.1.8: Expressing a given vector as a linear combination of other
 # given vectors
@@ -42,7 +43,10 @@ print(lin_comb(products, quantities))
 # • output: a list [α1, . . . ,αn] of coefficients such that
 # b = α1 v1 + · · · + αn vn
 # or a report that none exists.
-def backward_comb(b, vlist):
-	pass
+def linearcomb_to_coefficients(b, vlist):
+	result_vec = Vec(D, {})
+	for vec, comb in zip(vlist, b):
+		result_vec = result_vec + (comb * vec)
+	return result_vec
 
-print(list(zip([240, 55, 150, 133, 90],[240, 55, 150, 133, 90],[240, 55, 150, 133, 90])))
+print(linearcomb_to_coefficients(b, products))
