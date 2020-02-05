@@ -84,3 +84,5 @@ def scale_vecs(vecdict):
 # • output: the list of all linear combinations of the vectors in L
 # (Hint: use a loop (or recursion) and a comprehension. Be sure to test your procedure on examples
 # where L is an empty list.)
+def GF2_span(D, L):
+	pass
