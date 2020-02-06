@@ -34,5 +34,6 @@ print(identity({'a', 'b'}))
 # Quiz 4.1.9: Write a one-line procedure mat2rowdict(A) that, given an instance 
 # of Mat, returns the rowdict representation of the same matrix. Use dictionary 
 # comprehensions.
+# test
 def mat2rowdict(A):
 	return {r:Vec(A.D[1],{c:A[r,c] for c in A.D[1]}) for r in A.D[0]}
