@@ -1,6 +1,7 @@
 import sys
 sys.path.insert(0, "../lib")
 from vec import Vec
+from mat import Mat
 
 # Quiz 4.1.1: Write a nested comprehension whose value is list-of-row-list representation of a
 # 3 × 4 matrix all of whose elements are zero
@@ -18,3 +19,20 @@ col_2 = Vec(D, {'a':2, 'b':20})
 col_3 = Vec(D, {'a':3, 'b':30})
 coldict = {'@':col_1, '#':col_2, '?':col_3}
 print(coldict)
+
+# Quiz 4.1.7: Write an expression for the {'a','b','c'}×{'a','b','c'} identity matrix represented
+# as an instance of Mat.
+m = Mat(({'a', 'b', 'c'}, {'a', 'b', 'c'}), {('a', 'a'):1, ('b', 'b'):1, ('c', 'c'):1})
+print(m.f)
+
+def identity(D):
+	m = Mat((D,D), {(d,d):1 for d in D})
+	return m.f
+
+print(identity({'a', 'b'}))
+
+# Quiz 4.1.9: Write a one-line procedure mat2rowdict(A) that, given an instance 
+# of Mat, returns the rowdict representation of the same matrix. Use dictionary 
+# comprehensions.
+def mat2rowdict(A):
+	return {r:Vec(A.D[1],{c:A[r,c] for c in A.D[1]}) for r in A.D[0]}
