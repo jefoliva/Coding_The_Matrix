@@ -36,4 +36,15 @@ print(identity({'a', 'b'}))
 # comprehensions.
 # test
 def mat2rowdict(A):
-	return {r:Vec(A.D[1],{c:A[r,c] for c in A.D[1]}) for r in A.D[0]}
+	return {r:Vec(A.D[1],{c:A.f[r,c] for c in A.D[1]}) for r in A.D[0]}
+
+D = ({'a', 'b'},{'@', '#', '?'})
+m = Mat(D, {('a', '@'):1, ('a', '#'):2, ('a','?'):3, ('b','@'):10, ('b','#'):20, ('b','?'):30})
+print(mat2rowdict(m))
+
+# Quiz 4.1.10: Write a one-line procedure mat2coldict(A) that, given an instance of Mat,
+# returns the coldict representation of the same matrix. Use dictionary comprehensions.
+def mat2coldict(A):
+	return {c:Vec(A.D[0], {c:A.f[c,r] for r in A.D[0]}) for c in A.D[1]}
+
+print(mat2coldict(m))
