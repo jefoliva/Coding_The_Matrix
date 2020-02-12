@@ -40,11 +40,20 @@ def mat2rowdict(A):
 
 D = ({'a', 'b'},{'@', '#', '?'})
 m = Mat(D, {('a', '@'):1, ('a', '#'):2, ('a','?'):3, ('b','@'):10, ('b','#'):20, ('b','?'):30})
-print(mat2rowdict(m))
+# print(mat2rowdict(m))
 
 # Quiz 4.1.10: Write a one-line procedure mat2coldict(A) that, given an instance of Mat,
 # returns the coldict representation of the same matrix. Use dictionary comprehensions.
 def mat2coldict(A):
-	return {c:Vec(A.D[0], {c:A.f[c,r] for r in A.D[0]}) for c in A.D[1]}
+	return {c:Vec( A.D[0], { r:A.f[r,c] for r in A.D[0]} ) for c in A.D[1] }
 
 print(mat2coldict(m))
+
+# Quiz 4.3.1: Write the procedure mat2vec(M) that, given an instance of Mat, returns the corresponding
+# instance of Vec. As an example, we show the result of applying this procedure to the
+# matrix M given in Example 4.1.3 (Page 187):
+def mat2vec(M):
+	return Vec({(r, c) for r in M.D[0] for c in M.D[1]}, M.f)  
+
+print(mat2vec(m))
+	
